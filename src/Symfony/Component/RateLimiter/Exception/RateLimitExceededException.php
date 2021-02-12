@@ -12,6 +12,7 @@
 namespace Symfony\Component\RateLimiter\Exception;
 
 use Symfony\Component\RateLimiter\RateLimit;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
@@ -22,7 +23,7 @@ class RateLimitExceededException extends \RuntimeException
 {
     private $rateLimit;
 
-    public function __construct(RateLimit $rateLimit, $code = 0, \Throwable $previous = null)
+    public function __construct(RateLimit $rateLimit, $code = Response::HTTP_TOO_MANY_REQUESTS, \Throwable $previous = null)
     {
         parent::__construct('Rate Limit Exceeded', $code, $previous);
 
